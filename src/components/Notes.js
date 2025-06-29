@@ -55,15 +55,15 @@ const Notes = (props) => {
                         <div className="modal-body">
                             <form className='my-3'>
                                 <div className="mb-3">
-                                    <label htmlFor="title" className="form-label">Title</label>
+                                    <label htmlFor="etitle" className="form-label">Title</label>
                                     <input type="text" className="form-control" id="etitle" name="etitle"  value= {note.etitle} aria-describedby="emailHelp" onChange={onChange} minLength={5} required />
                                 </div>
                                 <div className="mb-3">
-                                    <label htmlFor="description" className="form-label">Description</label>
+                                    <label htmlFor="edescription" className="form-label">Description</label>
                                     <input type="text" className="form-control" id="edescription" name="edescription" value={note.edescription} onChange={onChange} minLength={5} required />
                                 </div>
                                 <div className="mb-3">
-                                    <label htmlFor="tag" className="form-label">Tag</label>
+                                    <label htmlFor="etag" className="form-label">Tag</label>
                                     <input type="text" className="form-control" id="etag" name="etag" value={note.etag} onChange={onChange} minLength={5} required  />
                                 </div>
                             </form>

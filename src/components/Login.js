@@ -32,10 +32,10 @@ const Login = (props) => {
         }   
     }
     return (
-        <div style={{marginTop:'0.8rem'}}>
+        <div style={{marginTop:'0rem'}}>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                    <label htmlFor="email1" className="form-label">Email address</label>
+                    <label htmlFor="email" className="form-label">Email address</label>
                     <input type="email" className="form-control" value={credentials.email} id="email" name='email' aria-describedby="emailHelp" onChange={onChange}/>
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>

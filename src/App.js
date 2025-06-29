@@ -26,8 +26,10 @@ function App() {
     <>
       <Router>
         <NoteState >
-          <Navbar/>
-          <Alert alert={alert}/>
+          
+            <Navbar/>
+            <Alert alert={alert}/>
+          
           <div className="container">
             <Routes>
               <Route path= '/about' element={<About showAlert={showAlert}/>}/>

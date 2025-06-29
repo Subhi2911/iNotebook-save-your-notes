@@ -12,7 +12,11 @@ const Signup = (props) => {
 
     const handleSubmit = async(e)=>{
         e.preventDefault();
-        
+
+        if (credentials.password !== credentials.cpassword) {
+            props.showAlert("Passwords do not match", "danger");
+            return;
+}
         //const {name , email ,password , } = credentials
         const response = await fetch("http://localhost:5000/api/auth/createuser", {
             method: "POST",
@@ -35,7 +39,7 @@ const Signup = (props) => {
     }
 
     return (
-        <div className='container' style={{marginTop:'0.8rem'}} >
+        <div className='container' style={{marginTop:'0rem'}} >
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Username</label>
@@ -51,8 +55,8 @@ const Signup = (props) => {
                     <input type="password" className="form-control" name='password' value={credentials.password} onChange={onChange} id="password" minLength={5} required/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="cPassword" className="form-label">Confirm Password</label>
-                    <input type="password" className="form-control" name='cpassword' value={credentials.cPassword} onChange={onChange} id="cPassword" minLength={5} required/>
+                    <label htmlFor="cpassword" className="form-label">Confirm Password</label>
+                    <input type="password" className="form-control" name='cpassword' value={credentials.cpassword} onChange={onChange} id="cPassword" minLength={5} required/>
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
