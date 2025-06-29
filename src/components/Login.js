@@ -23,16 +23,18 @@ const Login = (props) => {
         console.log(json)
         if(json.success){
             //save the token and resirect
-            localStorage.setItem('token', json.authtoken);
-            navigate('/');
+            localStorage.setItem('token', json.authToken);
             props.showAlert("Logged in Successfully!! ","success" )
+            navigate('/');
+            
         }
         else{
             props.showAlert(json.error,"danger" )
         }   
     }
     return (
-        <div style={{marginTop:'0rem'}}>
+        <div style={{marginTop:'0.8rem'}}>
+            <h2>Login to continue to iNotebook</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
