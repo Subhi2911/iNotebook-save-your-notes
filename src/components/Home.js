@@ -1,12 +1,13 @@
 import Notes from './Notes';
+//import Alert from './Alert';
 
-const Home = () => {
+const Home = (props) => {
 
   
   return (
-    <div style={{marginTop:'4rem'}} >
+    <div style={{marginTop:'0.8rem'}} >
       
-      <Notes/>
+      <Notes showAlert={props.showAlert}/>
     </div>
   )
 }

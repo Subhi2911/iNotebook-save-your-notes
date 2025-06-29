@@ -47,13 +47,16 @@ const NoteState = (props) => {
                 "Content-Type": "application/json",
                 "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjg1ZDJkOTIxZmY2NDRiNDU2MDJjOGZmIn0sImlhdCI6MTc1MDk0Mzc2NX0.LtoumJxTe0jqF_USRVCZdw-ahmhaPN1CLwCTG9t0gLU"
             },
+            
         });
-        const json=await response.json();
+        console.log(response);
+        
 
         const newNotes = notes.filter((note)=>{
            return note._id!==id
         })
         setNotes(newNotes)
+        
     }
     //Edit a note
     const editNote = async(id,title,description,tag) =>{
@@ -70,6 +73,7 @@ const NoteState = (props) => {
         });
         const json = await response.json();
         let newNotes = JSON.parse(JSON.stringify(notes));
+        console.log(json);
 
         for (let index = 0; index < notes.length; index++) {
             const element = notes[index];
