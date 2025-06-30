@@ -40,6 +40,7 @@ const Signup = (props) => {
 
     return (
         <div className='container' style={{marginTop:'0rem'}} >
+            <h2>Create An Account To Continue</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Username</label>
