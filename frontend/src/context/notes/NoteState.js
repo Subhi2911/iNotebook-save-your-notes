@@ -3,6 +3,7 @@ import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
     const host = process.env.REACT_APP_BACKEND_URL
+    console.log(host)
     const notesInitial = []
     const [notes, setNotes] = useState(notesInitial)
     
