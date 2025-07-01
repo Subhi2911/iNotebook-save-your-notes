@@ -11,33 +11,48 @@ const Signup = (props) => {
         setCredentials({...credentials, [e.target.name]: e.target.value})
     }
 
-    const handleSubmit = async(e)=>{
-        e.preventDefault();
+    const handleSubmit = async (e) => {
+  e.preventDefault();
 
-        if (credentials.password !== credentials.cpassword) {
-            props.showAlert("Passwords do not match", "danger");
-            return;
-}
-        //const {name , email ,password , } = credentials
-        const response = await fetch(`${host}/api/auth/createuser`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({name:credentials.name, email: credentials.email,password: credentials.password }),
-        });
-        const json = await response.json();
-        console.log(json)
-        if(json.success){
-            //save the token and resirect
-            localStorage.setItem('token', json.authtoken);
-            navigate('/');
-            props.showAlert("Account Created Successfully!! ","success" )
-        }
-        else{
-            props.showAlert(json.error,"danger" )
-        }   
+  if (credentials.password !== credentials.cpassword) {
+    props.showAlert("Passwords do not match", "danger");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${host}/api/auth/createuser`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: credentials.name,
+        email: credentials.email,
+        password: credentials.password,
+      }),
+    });
+
+    let json = {};
+    const text = await response.text(); // first get raw text
+    try {
+      json = JSON.parse(text); // try to parse JSON
+    } catch (err) {
+      console.warn("Could not parse JSON:", text);
     }
+
+    if (response.ok && json.success) {
+      localStorage.setItem("token", json.authToken); // make sure it's `authToken` not `authtoken`
+      navigate("/");
+      props.showAlert("Account Created Successfully!", "success");
+    } else {
+      props.showAlert(json.error || "Signup failed", "danger");
+    }
+  } catch (err) {
+    console.error("Network error:", err);
+    props.showAlert("Network error. Please try again later.", "danger");
+  }
+};
+    
 
     return (
         <div className='container' style={{marginTop:'0rem'}} >
