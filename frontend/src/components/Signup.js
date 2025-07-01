@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Signup = (props) => {
     const host = process.env.REACT_APP_BACKEND_URL
-    console.log(host)
+    
     let navigate = useNavigate();
         const [credentials, setCredentials]=useState({name: "", email: "", password: "", cpassword:"" })
 
@@ -43,6 +43,8 @@ const Signup = (props) => {
 
     if (response.ok && json.success) {
       localStorage.setItem("token", json.authToken); 
+      console.log(localStorage.getItem("token"))
+
       navigate("/");
       props.showAlert("Account Created Successfully!", "success");
     } else {

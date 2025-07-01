@@ -3,7 +3,7 @@ import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
     const host = process.env.REACT_APP_BACKEND_URL
-    console.log(host)
+    console.log("Token being sent:", localStorage.getItem('token'))
     const notesInitial = []
     const [notes, setNotes] = useState(notesInitial)
     

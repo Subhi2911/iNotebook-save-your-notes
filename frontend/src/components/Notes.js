@@ -12,7 +12,6 @@ const Notes = (props) => {
     useEffect(()=>{
         const token= localStorage.getItem('token');
         if(token && token !== 'undefined' && token !== 'null'){
-            console.log("gugu")
             getNotes()
         }
         else{
