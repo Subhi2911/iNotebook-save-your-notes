@@ -39,6 +39,7 @@ const NoteState = (props) => {
         
         });
         const note = await response.json();
+        console.log("Added note from server:" , note)
         setNotes(notes.concat(note));
         
     }
