@@ -42,7 +42,7 @@ const Signup = (props) => {
     }
 
     if (response.ok && json.success) {
-      localStorage.setItem("token", json.authToken); // make sure it's `authToken` not `authtoken`
+      localStorage.setItem("token", json.authToken); 
       navigate("/");
       props.showAlert("Account Created Successfully!", "success");
     } else {
