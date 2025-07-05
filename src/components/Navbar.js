@@ -1,4 +1,4 @@
-import React ,{useEffect, useState} from 'react';
+import React ,{useEffect, useState, useRef} from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Avatar from './Avatar'; 
 
@@ -9,6 +9,14 @@ export default function Navbar(props) {
     const location = useLocation();
     const host = process.env.REACT_APP_BACKEND_URL
     const token = localStorage.getItem('token');
+    const offcanvasRef = useRef();
+
+    const closeOffcanvas = () => {
+        const bsOffcanvas = window.bootstrap.Offcanvas.getInstance(offcanvasRef.current);
+        if (bsOffcanvas) {
+            bsOffcanvas.hide();
+        }
+    };
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -41,12 +49,12 @@ export default function Navbar(props) {
 
 
     const myStyle = {
-        backgroundColor: props.theme === 'light' ? 'white' : 'black',
+        backgroundColor: props.theme === 'light' ? 'white' : '#0C0950',
         color: props.color,
     };
 
     const offCanvasStyle = {
-        backgroundColor: props.theme === 'light' ? 'white' : '#DBDBDB',
+        backgroundColor: props.theme === 'light' ? 'white' : '#F1EFEC',
         color: 'black',
     };
 
@@ -71,22 +79,18 @@ export default function Navbar(props) {
                     <div>
                         {!token || token === 'undefined' || token === 'null' ? (
                             <div></div>
-                        ) : (
-                            // <i
-                            //     className="fa-solid fa-circle-user fa-2xl"
-                            //     style={{ cursor: "pointer", color: props.color }}
-                            //     data-bs-toggle="offcanvas"
-                            //     data-bs-target="#userOffcanvas"
-                            //     aria-controls="userOffcanvas"
-                            // ></i>
-                            <div style={{ cursor: "pointer", color: props.color }}
-                             data-bs-toggle="offcanvas"
+                         ) : user ? (
+                        <div
+                            style={{ cursor: "pointer", color: props.color }}
+                            data-bs-toggle="offcanvas"
                             data-bs-target="#userOffcanvas"
-                            aria-controls="userOffcanvas">
-                                <Avatar width='2' height='2' size='16' name={user.name} theme={props.theme} />
-                            </div>
-                        )}
+                            aria-controls="userOffcanvas"
+                        >
+                            <Avatar width='2' height='2' size='16' name={user.name} theme={props.theme} />
+                        </div>
+                        ) : null}
                     </div>
+
                 </div>
             </nav>
 
@@ -97,6 +101,7 @@ export default function Navbar(props) {
                 id="userOffcanvas"
                 aria-labelledby="userOffcanvasLabel"
                 style={offCanvasStyle}
+                ref={offcanvasRef}
             >
                 <div className="offcanvas-header">
                     <h5 className="offcanvas-title" id="userOffcanvasLabel">Your Account</h5>
@@ -109,25 +114,28 @@ export default function Navbar(props) {
                 </div>
                 <div className="offcanvas-body ">
                     {user&&<div className='container'>
-                        <div className='d-flex justify-content-center' >
-                            <div className='profile-image d-flex justify-content-center' style={{width:'11rem',height:'11rem', backgroundColor:'pink', borderRadius:'50%' }}>
-                            <Avatar name={user.name} theme={props.theme} size={40} />
+                        <div className='d-flex justify-content-center'  >
+                            <div className='profile-image d-flex justify-content-center align-items-center' style={{width:'11.5rem',height:'11.5rem', backgroundColor:'black', borderRadius:'50%' }}>
+                            <Avatar name={user.name} theme={props.theme} size={40}  />
                             </div>
                             
                         </div>
-                        
-                        <p className="fw-semibold my-3" style={{marginLeft:'5rem'}}>{user.email}</p>
-                        <p className="text-muted small" style={{marginLeft:'2rem'}}>User ID: {user._id}</p>
+                        <div className='d-flex  justify-content-center'>
+                            <p className="fw-semibold my-3" >{user.email}</p>
+                        </div>
+                        <div className='d-flex justify-content-center'>
+                            <p className="text-muted small" >User ID: {user._id}</p>
+                        </div>
                     </div>}
                     <ul className="list-group">
                         <li className="list-group-item" style={offCanvasStyle}>
-                            <Link to="/profile" className="text-decoration-none" style={{ color: 'black' }}>Profile</Link>
+                            <Link onClick={() => { closeOffcanvas(); }} to="/profile" className="text-decoration-none" style={{ color: 'black' }}>Profile</Link>
                         </li>
                         <li className="list-group-item" style={offCanvasStyle}>
-                            <Link to="/settings" className="text-decoration-none" style={{ color: 'black' }}>Settings</Link>
+                            <Link onClick={() => { closeOffcanvas(); }} to="/settings" className="text-decoration-none" style={{ color: 'black' }}>Settings</Link>
                         </li>
-                        <li className="list-group-item" style={{offCanvasStyle}}>
-                            <button onClick={handleLogout} className="btn btn-danger w-100">Logout</button>
+                        <li className="list-group-item" style={offCanvasStyle}>
+                            <button onClick={() => { handleLogout(); closeOffcanvas(); }}className="btn btn-danger w-100"  >Logout</button>
                         </li>
                     </ul>
                 </div>

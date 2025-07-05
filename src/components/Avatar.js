@@ -11,14 +11,15 @@ export default function Avatar({ name = "", size = 50, width= 11,
     .join('')
     .toUpperCase();
 
-  const background = theme === 'light' ? '#0B1D51' : '#6c757d';
+  const background = theme === 'light' ? '#0B1D51' : '#F1E7E7';
+  const color= theme==='light'?'#F1E7E7':'#0B1D51'
 
   const avatarStyle = {
     width:`${width}rem`,
     height:`${height}rem`, 
     borderRadius:'50%',
     backgroundColor: background,
-    color: 'white',
+    color: color,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -28,5 +29,5 @@ export default function Avatar({ name = "", size = 50, width= 11,
     userSelect: 'none',
   };
 
-  return <div style={avatarStyle}>{initials}</div>;
+  return <div  style={avatarStyle}>{initials}</div>;
 }
