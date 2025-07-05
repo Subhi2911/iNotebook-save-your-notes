@@ -8,6 +8,7 @@ import Alert from './components/Alert';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import { useState } from 'react';
+import Settings from './components/Settings';
 //REACT_APP_BACKEND_URL=https://inoteook-backend-1.onrender.com
 
 
@@ -22,6 +23,20 @@ function App() {
       setAlert(null);
     },1500)
   }
+  const [selectTheme, setSelectTheme] = useState('light');
+  const [color, setColor] = useState("black");
+  const setTheme =(selectTheme)=>{
+    if (selectTheme==='dark'){
+      setSelectTheme('dark');
+      setColor('white')
+      
+    }
+    else {
+      setSelectTheme('light')
+      setColor('black')
+      
+    }
+  }
   return (
     <>
       <Router>
@@ -30,12 +45,13 @@ function App() {
             <Navbar/>
             <Alert alert={alert}/>
           
-          <div className="container">
+          <div className="container mt-2 pt-3">
             <Routes>
-              <Route path= '/about' element={<About showAlert={showAlert}/>}/>
-              <Route path='/' element={<Home showAlert={showAlert}/>}/>
-              <Route path='/login' element={<Login showAlert={showAlert}/>} />
-              <Route path='/signup' element= {<Signup showAlert={showAlert}/>} />
+              <Route path= '/about' element={<About showAlert={showAlert} theme={selectTheme} color={color}/>}/>
+              <Route path='/' element={<Home showAlert={showAlert} theme={selectTheme}/>} color={color}/>
+              <Route path='/login' element={<Login showAlert={showAlert} theme={selectTheme}/>} color={color}/>
+              <Route path='/signup' element= {<Signup showAlert={showAlert} theme={selectTheme} color={color}/>} />
+              <Route path='/settings' element={<Settings showAlert={showAlert} setTheme={setTheme} theme={selectTheme} color={color}/>} />
 
             </Routes>
           </div>

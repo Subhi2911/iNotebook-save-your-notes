@@ -58,8 +58,8 @@ const Signup = (props) => {
     
 
     return (
-        <div className='container' style={{marginTop:'0rem'}} >
-            <h2>Create An Account To Continue</h2>
+        <div className='container' style={{marginTop:'0.8rem', display:'flex', justifyContent:'center'}} >
+            <h2 style={{display:'inline', paddingRight:'2rem',paddingTop:'8rem', color:'#0B1D51'}}>Create An Account To Continue</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Username</label>
@@ -73,12 +73,15 @@ const Signup = (props) => {
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
                     <input type="password" className="form-control" name='password' value={credentials.password} onChange={onChange} id="password" minLength={5} required/>
+                    <div id="passwordHelpBlock" className="form-text">
+                      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                    </div>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="cpassword" className="form-label">Confirm Password</label>
                     <input type="password" className="form-control" name='cpassword' value={credentials.cpassword} onChange={onChange} id="cPassword" minLength={5} required/>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary my-2">Submit</button>
             </form>
         </div>
     )
