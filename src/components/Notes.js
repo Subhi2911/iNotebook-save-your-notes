@@ -46,10 +46,10 @@ const Notes = (props) => {
     const onChange=(e)=>{
         setNote({...note, [e.target.name]: e.target.value})
     }
-
+    let myStyle={color:props.color}
     return (
         <>
-            <AddNote showAlert={props.showAlert}/>
+            <AddNote showAlert={props.showAlert} theme={props.theme} color={props.color}/>
             <button  type="button" ref={ref} className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Update Note
             </button>
@@ -84,13 +84,13 @@ const Notes = (props) => {
                 </div>
             </div>
 
-            <div className='row my-3'>
+            <div className='row my-3' style={myStyle}>
                 <h2>Your Notes</h2>
                 <div className="container mx-1">
                     {notes.length===0 && 'No notes to display!'}
                 </div>
                 {Array.isArray(notes) && notes.map((note)=>{
-                return <NoteItem key={note._id} updateNote={()=>updateNote(note)} note={note} showAlert={props.showAlert} />;
+                return <NoteItem key={note._id} updateNote={()=>updateNote(note)} note={note} showAlert={props.showAlert} theme={props.theme} color={props.color}/>;
             })}
             </div>
         </>

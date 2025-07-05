@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import { useState } from 'react';
 import Settings from './components/Settings';
+
 //REACT_APP_BACKEND_URL=https://inoteook-backend-1.onrender.com
 
 
@@ -23,18 +24,19 @@ function App() {
       setAlert(null);
     },1500)
   }
-  const [selectTheme, setSelectTheme] = useState('light');
+  const [mode, setMode] = useState('light');
   const [color, setColor] = useState("black");
   const setTheme =(selectTheme)=>{
     if (selectTheme==='dark'){
-      setSelectTheme('dark');
+      setMode('dark');
       setColor('white')
+      document.body.style.backgroundColor ='#2A1458';
       
     }
     else {
-      setSelectTheme('light')
+      setMode('light')
       setColor('black')
-      
+      document.body.style.backgroundColor = 'white';
     }
   }
   return (
@@ -42,17 +44,17 @@ function App() {
       <Router>
         <NoteState >
           
-            <Navbar/>
+            <Navbar theme={mode} color={color}/>
             <Alert alert={alert}/>
           
           <div className="container mt-2 pt-3">
             <Routes>
-              <Route path= '/about' element={<About showAlert={showAlert} theme={selectTheme} color={color}/>}/>
-              <Route path='/' element={<Home showAlert={showAlert} theme={selectTheme}/>} color={color}/>
-              <Route path='/login' element={<Login showAlert={showAlert} theme={selectTheme}/>} color={color}/>
-              <Route path='/signup' element= {<Signup showAlert={showAlert} theme={selectTheme} color={color}/>} />
-              <Route path='/settings' element={<Settings showAlert={showAlert} setTheme={setTheme} theme={selectTheme} color={color}/>} />
-
+              <Route path= '/about' element={<About showAlert={showAlert} theme={mode} color={color}/>}/>
+              <Route path='/' element={<Home showAlert={showAlert} theme={mode} color={color}/>} />
+              <Route path='/login' element={<Login showAlert={showAlert} theme={mode} color={color}/>} />
+              <Route path='/signup' element= {<Signup showAlert={showAlert} theme={mode} color={color}/>} />
+              <Route path='/settings' element={<Settings showAlert={showAlert} setTheme={setTheme} theme={mode} color={color}/>} />
+              
             </Routes>
           </div>
           </NoteState>

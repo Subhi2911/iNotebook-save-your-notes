@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import {Link, useNavigate } from 'react-router-dom'
 
 const Login = (props) => {
     const host = process.env.REACT_APP_BACKEND_URL
@@ -48,6 +48,10 @@ const Login = (props) => {
                 </div>
                 <button type="submit" className="btn btn-primary" >Submit</button>
             </form>
+            <div className='d-flex my-3 mx-4'>
+          <p className='my-2'>Create New Account</p>
+          <Link className="btn btn-outline-primary mx-2" to="/signup">Sign Up</Link>
+        </div>
         </div>
     )
 }

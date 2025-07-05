@@ -7,7 +7,7 @@ const Home = (props) => {
   return (
     <div style={{marginTop:'0.8rem'}} >
       
-      <Notes showAlert={props.showAlert}/>
+      <Notes showAlert={props.showAlert} theme={props.theme} color={props.color}/>
     </div>
   )
 }

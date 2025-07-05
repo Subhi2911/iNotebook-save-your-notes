@@ -65,7 +65,7 @@ const Settings = (props) => {
                             type="radio"
                             name="titleFont"
                             id="default"
-                            value="light"
+                            value=""
                             onChange={handleChangeFontTitle}
                             checked={titleFont === ''}
                         />
@@ -86,7 +86,7 @@ const Settings = (props) => {
                     
                 </div>
             </div>
-            <button type="button" className="btn btn-info my-4" onClick={handleClick}>Submit</button>
+            <button type="button" className="btn btn-info my-4" onClick={handleClick}>Confirm</button>
         </div>
     );
 };
