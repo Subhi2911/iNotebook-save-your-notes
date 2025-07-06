@@ -60,7 +60,7 @@ const Profile = (props) => {
 
             <ul className="list-group">
                 <li className="list-group-item" style={myStyle}>
-                    <strong style={{color:'#FFB433'}}>Profile:</strong> <p style={{display:'inline'}}>{user.name}</p>
+                    <strong style={{color:'#FFB433'}}>Username:</strong> <p style={{display:'inline'}}>{user.name}</p>
                 </li>
                 <li className="list-group-item" style={myStyle}>
                     <strong style={{color:'#FFB433'}}>Email:</strong> <p style={{display:'inline'}}>{user.email}</p>
