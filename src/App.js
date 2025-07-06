@@ -10,8 +10,6 @@ import Signup from './components/Signup';
 import { useState } from 'react';
 import Settings from './components/Settings';
 
-//REACT_APP_BACKEND_URL=https://inoteook-backend-1.onrender.com
-
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -30,7 +28,7 @@ function App() {
     if (selectTheme==='dark'){
       setMode('dark');
       setColor('white')
-      document.body.style.backgroundColor ='#001A6E';
+      document.body.style.backgroundColor ='#393E46';
       
     }
     else {

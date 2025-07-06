@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function About(props) {
   let myStyle={
-    backgroundColor: props.theme==='dark'?'#001A6E':'white',
+    backgroundColor: props.theme==='dark'?'#393E46':'white',
     color:props.color
   }
   return (

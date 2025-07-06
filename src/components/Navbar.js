@@ -49,7 +49,7 @@ export default function Navbar(props) {
 
 
     const myStyle = {
-        backgroundColor: props.theme === 'light' ? 'white' : '#0C0950',
+        backgroundColor: props.theme === 'light' ? '#FDFBEE' : '#000000',
         color: props.color,
     };
 
