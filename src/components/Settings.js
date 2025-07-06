@@ -9,7 +9,7 @@ const Settings = (props) => {
   useEffect(() => {
     setSelectedTheme(props.theme);
     if (props.theme === 'dark') {
-      setBgColor('#001A6E');
+      setBgColor('#393E46');
       setColor('white');
     } else {
       setBgColor('white');
