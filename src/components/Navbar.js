@@ -56,6 +56,7 @@ export default function Navbar(props) {
         backgroundColor: '#D8D8D8',
         color: 'black'
     };
+    const bordercolor= (location.pathname==='/settings'||location.pathname==='/profile')?'#FFB433':'';
 
     return (
         <>
@@ -63,13 +64,13 @@ export default function Navbar(props) {
                 <div className="d-flex justify-content-between align-items-center w-100">
                     {/* Left Side: Logo + Links */}
                     <div className="d-flex align-items-center">
-                        <h5 className="me-3 mb-0" style={{ color: props.color }}>NoteXpress</h5>
+                        <h5 className="me-3 mb-0" style={{ color:'#FF6B6B' }}>NoteXpress</h5>
                         <ul className="navbar-nav d-flex flex-row mb-0">
                             <li className="nav-item mx-1">
-                                <Link className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} to="/" style={{ color: props.color }}>Home</Link>
+                                <Link className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} to="/" style={{ color: location.pathname === '/' ?'#FFB433':props.color }}>Home</Link>
                             </li>
                             <li className="nav-item mx-1">
-                                <Link className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`} to="/about" style={{ color: props.color }}>About</Link>
+                                <Link className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`} to="/about" style={{ color: location.pathname === '/about' ?'#FFB433':props.color }}>About</Link>
                             </li>
                         </ul>
                     </div>
@@ -80,7 +81,7 @@ export default function Navbar(props) {
                             <div></div>
                          ) : user ? (
                         <div
-                            style={{ cursor: "pointer", color: props.color }}
+                            style={{ cursor: "pointer", color: props.color ,width:'2.4rem',height:'2.4rem', borderRadius:'50%',border: bordercolor ? `2px solid ${bordercolor}` : 'none' ,display:'flex',justifyContent:'center',alignItems:'center'}}
                             data-bs-toggle="offcanvas"
                             data-bs-target="#userOffcanvas"
                             aria-controls="userOffcanvas"

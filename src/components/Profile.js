@@ -30,7 +30,7 @@ const Profile = (props) => {
     }, [token, host]);
 
     const myStyle = {
-        backgroundColor: props.theme === 'dark' ? '#393E46' : 'white',
+        backgroundColor: props.theme==='dark'?'#232D3F':'white',
         color: props.color
     };
 
@@ -55,20 +55,25 @@ const Profile = (props) => {
                 <p className="fw-semibold my-3">{user.email}</p>
             </div>
             <div className='d-flex justify-content-center' >
-                <p style={{color:'#FFB433'}} className="text-muted small">User ID: {user._id}</p>
+                <p style={{color:'#FFB433'}} className="small">User ID: {user._id}</p>
             </div>
 
-            <ul className="list-group">
-                <li className="list-group-item" style={myStyle}>
-                    <strong style={{color:'#FFB433'}}>Username:</strong> <p style={{display:'inline'}}>{user.name}</p>
-                </li>
-                <li className="list-group-item" style={myStyle}>
-                    <strong style={{color:'#FFB433'}}>Email:</strong> <p style={{display:'inline'}}>{user.email}</p>
-                </li>
-                <li className="list-group-item" style={myStyle}>
-                    <strong style={{color:'#FFB433'}}>Date of Join:</strong> <p style={{display:'inline'}}>{new Date(user.date).toLocaleString()}</p>
-                </li>
-            </ul>
+            <table className="table table-bordered" style={myStyle}>
+                <tbody >
+                    <tr >
+                        <th style={{  ...myStyle, color: '#FFB433', width: '40%', textAlign: 'center' }}>Username:</th>
+                        <td style={{...myStyle, textAlign: 'center' }}>{user.name}</td>
+                    </tr>
+                    <tr>
+                        <th style={{ ...myStyle, color: '#FFB433' ,width: '40%', textAlign: 'center'}}>Email:</th>
+                        <td style={{...myStyle, textAlign: 'center' }}>{user.email}</td>
+                    </tr>
+                    <tr>
+                        <th style={{ ...myStyle, color: '#FFB433',width: '40%' , textAlign: 'center'}}>Date of Join:</th>
+                        <td style={{...myStyle, textAlign: 'center' }}>{new Date(user.date).toLocaleString()}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 };

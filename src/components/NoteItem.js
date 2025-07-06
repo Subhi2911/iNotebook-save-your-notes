@@ -11,17 +11,20 @@ const NoteItem = ( props ) => {
      deleteNote(note._id);
     props.showAlert("Note deleted successfully!", "success");
   };
-  
+  let noteStyle={
+        backgroundColor:props.theme==='dark'?'#273F4F':'white',
+        color:props.theme==='dark'?'white':'black',
+    }
   return (
     <div className='col-md-3 my-3'>
-      <div className="card" >
+      <div style={noteStyle} className="card" >
         <span className=" badge rounded-pill bg-danger " style={{display:'flex',
                 justifyContent:'flex-end', 
                 position:'absolute',
                 right:'0'}}>
               {note.tag}
               </span>
-        <div className="card-body my-2">
+        <div style={noteStyle} className="card-body my-2">
             <h5 className="card-title">{note.title}</h5>
               
             <p className="card-text">{note.description}</p>

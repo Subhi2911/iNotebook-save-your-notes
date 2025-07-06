@@ -17,6 +17,10 @@ const AddNote = (props) => {
         setNote({...note, [e.target.name]: e.target.value})
     }
     let myStyle={color: props.theme==='dark'?'white':'black'};
+    let inputStyle={
+        backgroundColor:props.theme==='dark'?'#273F4F':'white',
+        color:props.theme==='dark'?'white':'black',
+    }
     
     return (
         <div>
@@ -25,21 +29,21 @@ const AddNote = (props) => {
                 <form className='my-3'style={myStyle}>
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>
-                    <input type="text" className="form-control" id="title" name="title"  value= {note.title} aria-describedby="emailHelp" onChange={onChange} />
+                    <input style={inputStyle} type="text" className="form-control" id="title" name="title"  value= {note.title} aria-describedby="emailHelp" onChange={onChange} />
                     <div style={{height:'0.8rem'}}>
-                        <div id="titleHelp" className="form-text" style={{ visibility: note.title.length < 5 ? 'visible' : 'hidden' }}>Title must have at least 5 characters.</div>
+                        <div id="titleHelp" className="form-text" style={{ visibility: note.title.length < 5 ? 'visible' : 'hidden',color:props.theme==='dark'?'#FFB433':'black' ,transition: 'visibility 0.2s ease',}}>Title must have at least 5 characters.</div>
                     </div>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="description" className="form-label">Description</label>
-                    <textarea type="text" className="form-control" rows='3' id="description" name="description" value={note.description} onChange={onChange} />
+                    <textarea style={inputStyle} type="text" className="form-control" rows='3' id="description" name="description" value={note.description} onChange={onChange} />
                     <div style={{height:'0.8rem'}}>
-                        <div id="descriptionHelp" className="form-text" style={{ visibility: note.description.length < 5 ? 'visible' : 'hidden' }}>Description must have at least 5 characters</div>
+                        <div id="descriptionHelp" className="form-text" style={{ visibility: note.description.length < 5 ? 'visible' : 'hidden' ,color:props.theme==='dark'?'#FFB433':'black',transition: 'visibility 0.2s ease',}}>Description must have at least 5 characters</div>
                     </div>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="tag" className="form-label">Tag</label>
-                    <input type="text" className="form-control" id="tag" name="tag" value={note.tag} onChange={onChange}/>
+                    <input style={inputStyle} type="text" className="form-control" id="tag" name="tag" value={note.tag} onChange={onChange} />
                 </div>
                 <button type="submit" disabled={note.title.length <5 || note.description.length <5 }  className="btn btn-primary" onClick={handleClick}>Submit</button>
                 </form>
