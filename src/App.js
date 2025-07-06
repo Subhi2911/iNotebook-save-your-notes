@@ -29,7 +29,7 @@ function App() {
     if (selectTheme==='dark'){
       setMode('dark');
       setColor('white')
-      document.body.style.backgroundColor ='#393E46';
+      document.body.style.backgroundColor ='#232D3F';
       
     }
     else {

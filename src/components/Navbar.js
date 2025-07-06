@@ -1,6 +1,7 @@
 import React ,{useEffect, useState, useRef} from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Avatar from './Avatar'; 
+import Loader from './Loader';
 
 export default function Navbar(props) {
     const navigate = useNavigate();
@@ -47,18 +48,18 @@ export default function Navbar(props) {
 
 
     const myStyle = {
-        backgroundColor: props.theme === 'light' ? '#FDFBEE' : '#000000',
+        backgroundColor: props.theme === 'light' ? '#FDFAF6' : '#0F0F0F',
         color: props.color,
     };
 
     const offCanvasStyle = {
-        backgroundColor: props.theme === 'light' ? 'white' : '#F1EFEC',
-        color: 'black',
+        backgroundColor: '#D8D8D8',
+        color: 'black'
     };
 
     return (
         <>
-            <nav className="navbar fixed-top w-100 px-3" style={myStyle}>
+            <nav className="navbar fixed-top w-100 px-2 navbar-highlighted" style={myStyle}>
                 <div className="d-flex justify-content-between align-items-center w-100">
                     {/* Left Side: Logo + Links */}
                     <div className="d-flex align-items-center">
@@ -86,7 +87,11 @@ export default function Navbar(props) {
                         >
                             <Avatar width='2' height='2' size='16' name={user.name} theme={props.theme} />
                         </div>
-                        ) : null}
+                        ) : (
+                        <div className='container' >
+                            <Loader theme={props.theme}/>
+                        </div>
+                        )}
                     </div>
 
                 </div>

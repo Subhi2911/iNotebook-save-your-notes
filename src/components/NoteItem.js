@@ -14,7 +14,7 @@ const NoteItem = ( props ) => {
   
   return (
     <div className='col-md-3 my-3'>
-      <div className="card" style={{ width: "16rem" }}>
+      <div className="card" >
         <span className=" badge rounded-pill bg-danger " style={{display:'flex',
                 justifyContent:'flex-end', 
                 position:'absolute',

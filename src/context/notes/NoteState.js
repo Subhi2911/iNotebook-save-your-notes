@@ -3,8 +3,8 @@ import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
     const host = process.env.REACT_APP_BACKEND_URL
-    console.log(host);
-    console.log("Token being sent:", localStorage.getItem('token'))
+    
+    
     const notesInitial = []
     const [notes, setNotes] = useState(notesInitial)
     
@@ -20,7 +20,7 @@ const NoteState = (props) => {
         
         });
         const json = await response.json();
-         console.log("Fetched notes JSON:", json);
+        
         setNotes(Array.isArray(json) ? json : json.notes || []);
 
     };
@@ -40,12 +40,13 @@ const NoteState = (props) => {
         
         });
         const note = await response.json();
-        console.log("Added note from server:" , note)
+        
         setNotes(notes.concat(note));
         
     }
     //Delete a note
     const deleteNote = async(id) =>{
+        // eslint-disable-next-line no-unused-vars
         const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
             method: "DELETE",
             headers: {
@@ -54,7 +55,7 @@ const NoteState = (props) => {
             },
             
         });
-        console.log(response);
+        
         
 
         const newNotes = notes.filter((note)=>{
@@ -76,9 +77,10 @@ const NoteState = (props) => {
         // …
         
         });
+        // eslint-disable-next-line no-unused-vars
         const json = await response.json();
         let newNotes = JSON.parse(JSON.stringify(notes));
-        console.log(json);
+        
 
         for (let index = 0; index < notes.length; index++) {
             const element = notes[index];

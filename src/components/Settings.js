@@ -3,16 +3,16 @@ import React, { useState, useEffect } from 'react';
 const Settings = (props) => {
   const [selectedTheme, setSelectedTheme] = useState(props.theme);
 
-  const [bgColor, setBgColor] = useState('white');
+  
   const [color, setColor] = useState('#001A6E');
 
   useEffect(() => {
     setSelectedTheme(props.theme);
     if (props.theme === 'dark') {
-      setBgColor('#393E46');
+      
       setColor('white');
     } else {
-      setBgColor('white');
+      
       setColor('#001A6E');
     }
   }, [props.theme]);
@@ -26,7 +26,7 @@ const Settings = (props) => {
   return (
     <div style={{ marginTop: '1rem' }}>
       <div>
-        <h4 style={{ backgroundColor: bgColor, color: color }}>Theme:</h4>
+        <h4 style={{  color: color }}>Theme:</h4>
         <div style={{ border: '2px solid grey', width: '90%', padding: '2rem' }}>
           <div className="form-check">
             <input
@@ -37,10 +37,10 @@ const Settings = (props) => {
               value="dark"
               onChange={handleChangeTheme}
               checked={selectedTheme === 'dark'}
-              style={{ backgroundColor: bgColor, color: color }}
+              style={{  color: color }}
             />
             <label
-              style={{ backgroundColor: bgColor, color: color }}
+              style={{  color: color }}
               className="form-check-label"
               htmlFor="dark"
             >
@@ -56,10 +56,10 @@ const Settings = (props) => {
               value="light"
               onChange={handleChangeTheme}
               checked={selectedTheme === 'light'}
-              style={{ backgroundColor: bgColor, color: color }}
+              style={{  color: color }}
             />
             <label
-              style={{ backgroundColor: bgColor, color: color }}
+              style={{  color: color }}
               className="form-check-label"
               htmlFor="light"
             >
