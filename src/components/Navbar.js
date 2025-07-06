@@ -84,6 +84,7 @@ export default function Navbar(props) {
                             data-bs-toggle="offcanvas"
                             data-bs-target="#userOffcanvas"
                             aria-controls="userOffcanvas"
+                            className={`${(location.pathname === '/profile' || location.pathname === '/settings' )?'activeprofile':''}`}
                         >
                             <Avatar width='2' height='2' size='16' name={user.name} theme={props.theme} />
                         </div>
