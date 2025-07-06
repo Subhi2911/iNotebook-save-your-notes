@@ -2,8 +2,6 @@ import React ,{useEffect, useState, useRef} from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Avatar from './Avatar'; 
 
-
-
 export default function Navbar(props) {
     const navigate = useNavigate();
     const location = useLocation();

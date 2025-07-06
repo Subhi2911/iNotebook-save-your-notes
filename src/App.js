@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import { useState } from 'react';
 import Settings from './components/Settings';
+import Profile from './components/Profile';
 
 
 function App() {
@@ -52,7 +53,7 @@ function App() {
               <Route path='/login' element={<Login showAlert={showAlert} theme={mode} color={color}/>} />
               <Route path='/signup' element= {<Signup showAlert={showAlert} theme={mode} color={color}/>} />
               <Route path='/settings' element={<Settings showAlert={showAlert} setTheme={setTheme} theme={mode} color={color}/>} />
-              
+              <Route path='/profile' element={<Profile showAlert={showAlert} setTheme={setTheme} theme={mode} color={color}/>} />
             </Routes>
           </div>
           </NoteState>
